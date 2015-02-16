@@ -9,10 +9,10 @@ public class Player {
 	
 	public Player(String handleName) {
 		super();
-		this.handleName = handleName;
-		this.lives = 5;
-		this.level = 1;
-		this.score = 0;
+		setHandleName(handleName);
+		setLevel(1);
+		setLives(5);
+		setScore(0);
 		setDefaultWeapon();
 	}
 	
