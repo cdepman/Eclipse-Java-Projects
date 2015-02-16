@@ -29,5 +29,5 @@ public class Weapon {
 	public void setDurability(int durability) {
 		this.durability = durability;
 	}
-	
+
 }
