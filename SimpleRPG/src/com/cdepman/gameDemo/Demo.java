@@ -1,4 +1,4 @@
-package org.example.learn;
+package com.cdepman.gameDemo;
 import java.util.ArrayList;
 
 public class Demo {
@@ -35,10 +35,10 @@ public class Demo {
 		
 		displayStats(Me);
 		
-		Enemy enemy1 = new Enemy(10, 3);
+		Enemy enemy1 = new Enemy(10, 3, 5);
 		enemy1.takeDamage(3);
 		
-		Soldier soldier1 = new Soldier(25, 1);
+		Soldier soldier1 = new Soldier(25, 1, 11);
 		soldier1.takeDamage(10);
 	}
 
