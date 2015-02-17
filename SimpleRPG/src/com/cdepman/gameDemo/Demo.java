@@ -40,6 +40,9 @@ public class Demo {
 		
 		Soldier soldier1 = new Soldier(25, 1, 11);
 		soldier1.takeDamage(10);
+		
+		SuperSoldier superSoldier = new SuperSoldier(25, 1, 40);
+		superSoldier.takeDamage(10);
 	}
 
 }
