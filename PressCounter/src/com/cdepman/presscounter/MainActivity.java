@@ -25,10 +25,15 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		counter = new Counter();
-		System.out.println(counter.getCount());
 		
 		resetCount = (Button) findViewById(R.id.button3);
-		resetCount.setOnClickListener((new ResetCount(this, counter)));
+		resetCount.setOnClickListener(new View.OnClickListener() {		
+			@Override
+			public void onClick(View view) {
+				counter.reset();
+				counterView.setText(counter.getCount());
+			}
+		});
 		
 		incrementRepeat = (Button) findViewById(R.id.button1);
 		incrementRepeat.setOnTouchListener(new AutoRepeatButton(400, 30, new OnClickListener() {
