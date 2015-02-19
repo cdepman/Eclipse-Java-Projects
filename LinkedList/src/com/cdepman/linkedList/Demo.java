@@ -19,6 +19,10 @@ public class Demo {
 		System.out.println(myLL.contains(7));
 		System.out.println(myLL.contains(42));
 		System.out.println(myLL.size());
+		System.out.println(myLL.removeHead());
+		System.out.println(myLL.size());
+		System.out.println(myLL.contains(55));
+		
 		
 		
 	}

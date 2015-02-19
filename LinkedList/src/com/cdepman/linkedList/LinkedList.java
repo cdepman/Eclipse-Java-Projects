@@ -1,24 +1,23 @@
 package com.cdepman.linkedList;
 
 public class LinkedList {
-	Node head;
-	Node tail;
-	int size = 0;
+	private Node head;
+	private Node tail;
+	private int size = 0;
 	
 	public void addToTail(Node nodeToAdd){
 		if (this.head == null){
 			this.head = nodeToAdd;
 		}
 		if (this.tail != null){
-			Node oldTail = this.tail;
-			nodeToAdd.setNext(oldTail);
+			this.tail.setNext(nodeToAdd); 
 		}
 		this.tail = nodeToAdd;
 		this.size++;
 	}
 	
 	public boolean contains(int target){
-		Node currentNode = this.tail;
+		Node currentNode = this.head;
 		
 		while (currentNode != null) {
 			if (currentNode.getValue() == target){
@@ -28,6 +27,13 @@ public class LinkedList {
 		};
 		
 		return false;
+	}
+	
+	public int removeHead(){
+		int value = this.head.getValue();
+		this.head = this.head.getNext();
+		this.size--;
+		return value;
 	}
 	
 	public int size(){
