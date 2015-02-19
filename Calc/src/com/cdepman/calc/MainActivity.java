@@ -4,13 +4,63 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	
+	EditText operand1;
+	EditText operand2;
+	Button add;
+	Button subtract;
+	Button multiply;
+	Button divide;
+	TextView result;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		// set up text entry fields
+		operand1 = (EditText) findViewById(R.id.editOperand1);
+		operand2 = (EditText) findViewById(R.id.editOperand2);
+		
+		// associate buttons
+		add = (Button) findViewById(R.id.btnAdd);
+		subtract = (Button) findViewById(R.id.btnSubtract);
+		multiply = (Button) findViewById(R.id.btnMultiply);
+		divide = (Button) findViewById(R.id.btnDivide);
+		
+		// associate output field
+		result = (TextView) findViewById(R.id.textResult);
+		
+		
+		// set up click listeners
+		add.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				float oper1 = Float.parseFloat(operand1.getText().toString());
+				float oper2 = Float.parseFloat(operand2.getText().toString());
+				float sum = oper1 + oper2;
+				result.setText(Float.toString(sum));
+			}
+		});
+		
+		subtract.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				float oper1 = Float.parseFloat(operand1.getText().toString());
+				float oper2 = Float.parseFloat(operand2.getText().toString());
+				float sum = oper1 + oper2;
+				result.setText(Float.toString(sum));
+			}
+		});
 	}
 
 	@Override
