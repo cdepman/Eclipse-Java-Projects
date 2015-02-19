@@ -31,6 +31,12 @@
         android:gravity="center"
         android:inputType="numberDecimal" />
 
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset" />
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"

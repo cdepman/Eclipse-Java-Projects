@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
 	Button multiply;
 	Button divide;
 	TextView result;
+	Button reset;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class MainActivity extends Activity {
 		subtract = (Button) findViewById(R.id.btnSubtract);
 		multiply = (Button) findViewById(R.id.btnMultiply);
 		divide = (Button) findViewById(R.id.btnDivide);
+		reset = (Button) findViewById(R.id.btnReset);
 		
 		// associate output field
 		result = (TextView) findViewById(R.id.textResult);
@@ -57,8 +59,39 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				float oper1 = Float.parseFloat(operand1.getText().toString());
 				float oper2 = Float.parseFloat(operand2.getText().toString());
-				float sum = oper1 + oper2;
-				result.setText(Float.toString(sum));
+				float difference = oper1 - oper2;
+				result.setText(Float.toString(difference));
+			}
+		});
+		
+		multiply.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				float oper1 = Float.parseFloat(operand1.getText().toString());
+				float oper2 = Float.parseFloat(operand2.getText().toString());
+				float product = oper1 * oper2;
+				result.setText(Float.toString(product));
+			}
+		});
+		
+		divide.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				float oper1 = Float.parseFloat(operand1.getText().toString());
+				float oper2 = Float.parseFloat(operand2.getText().toString());
+				float quotient = oper1 / oper2;
+				result.setText(Float.toString(quotient));
+			}
+		});
+		
+		reset.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				operand1.setText("");
+				operand2.setText("");
 			}
 		});
 	}
