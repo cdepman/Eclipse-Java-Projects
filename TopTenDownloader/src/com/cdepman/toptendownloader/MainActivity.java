@@ -45,7 +45,6 @@ public class MainActivity extends Activity {
 					ArrayList<Application> allApps = parseApps.getApplications();
 					
 					ArrayAdapter<Application> adapter = new ArrayAdapter<Application>(MainActivity.this, R.layout.list_item, allApps);
-					
 					listApps.setVisibility(listApps.VISIBLE);
 					listApps.setAdapter(adapter);
 					
@@ -55,7 +54,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		new DownloadData().execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml");
+		new DownloadData().execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=15/xml");
 	}
 
 	@Override
