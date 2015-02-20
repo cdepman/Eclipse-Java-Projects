@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import android.util.Log;
+
 public class ParseApplications {
 	private String data;
 	private ArrayList<Application> applications;
@@ -23,6 +25,7 @@ public class ParseApplications {
 		boolean operationStatus = true;
 		boolean inEntry = false;
 		String textValue = "";
+		Application currentRecord = null;
 		
 		
 		try{
@@ -35,24 +38,45 @@ public class ParseApplications {
 			
 			while (eventType != XmlPullParser.END_DOCUMENT){
 				String tagName = xpp.getName();
-				if (eventType == XmlPullParser.START_DOCUMENT){
-					
-				} else if (eventType == XmlPullParser.START_TAG){
-					
+				if (eventType == XmlPullParser.START_TAG){
+					if (tagName.equalsIgnoreCase("entry")){
+						inEntry = true;
+						currentRecord = new Application();
+					}
 				} else if (eventType == XmlPullParser.TEXT){
-					
+					textValue = xpp.getText();
 				} else if (eventType == XmlPullParser.END_TAG){
-					
+					if (inEntry){
+						if (tagName.equalsIgnoreCase("entry")){
+							applications.add(currentRecord);
+							inEntry = false;
+						}
+						if (tagName.equalsIgnoreCase("name")){
+							currentRecord.setName(textValue);
+						} else if (tagName.equalsIgnoreCase("artist")){
+							currentRecord.setArtist(textValue);
+						} else if (tagName.equalsIgnoreCase("releaseDate")){
+							currentRecord.setReleaseDate(textValue);
+						}
+					}
 				}
 				
 				eventType = xpp.next();
 			}
 			
-			
 		} catch(Exception e){
 			e.printStackTrace();
 			operationStatus = false;
 		}
+		
+		Log.d("HELLO!", Integer.toString(applications.size()));
+		
+		for (Application app: applications){
+			Log.d("LOG","***************");
+			Log.d("LOG", app.getName());
+			Log.d("LOG", app.getArtist());
+		}
+		
 		
 		return operationStatus;
 	}

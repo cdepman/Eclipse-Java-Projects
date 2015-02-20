@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -13,12 +14,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
 	Button parse;
+	String XMLdata;
+	ListView listApps;
 	
 	
 	@Override
@@ -26,14 +30,28 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		// connect to view elements
+		listApps = (ListView) findViewById(R.id.appsList);
+		
 		// set up click listeners on buttons
 		parse = (Button) findViewById(R.id.parseBTN);
 		parse.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				ParseApplications parseApps = new ParseApplications(XMLdata);
+				boolean opStatus = parseApps.process();
+				if (opStatus){
+					ArrayList<Application> allApps = parseApps.getApplications();
+					
+					ArrayAdapter<Application> adapter = new ArrayAdapter<Application>(MainActivity.this, R.layout.list_item, allApps);
+					
+					listApps.setVisibility(listApps.VISIBLE);
+					listApps.setAdapter(adapter);
+					
+				} else{
+					Log.d("MainAcivity", "error parsing XML");
+				}
 			}
 		});
 		
@@ -76,6 +94,7 @@ public class MainActivity extends Activity {
 		
 		protected void onPostExecute(String result){
 			Log.d("OnPostExecute", myXMLData);
+			XMLdata = myXMLData;
 		}
 		
 		

@@ -7,16 +7,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cdepman.toptendownloader.MainActivity" >
-
-    
-   	<Button
-   	    android:id="@+id/parseBTN"
-   	    android:layout_width="wrap_content"
-   	    android:layout_height="wrap_content"
-   	    android:layout_alignLeft="@+id/appsList"
-   	    android:layout_alignParentTop="true"
-   	    android:layout_marginTop="25dp"
-   	    android:text="Parse XML" />
     
    	<ListView
    	    android:id="@+id/appsList"
@@ -28,5 +18,13 @@
    	    android:visibility="invisible">
    	</ListView>
 
+   	<Button
+   	    android:id="@+id/parseBTN"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:layout_alignParentLeft="true"
+   	    android:layout_alignParentTop="true"
+   	    android:layout_marginTop="0dp"
+   	    android:text="Parse XML" />
 
 </RelativeLayout>
