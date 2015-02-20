@@ -8,10 +8,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cdepman.toptendownloader.MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    
+   	<Button
+   	    android:id="@+id/parseBTN"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:layout_alignLeft="@+id/appsList"
+   	    android:layout_alignParentTop="true"
+   	    android:layout_marginTop="25dp"
+   	    android:text="Parse XML" />
+    
+   	<ListView
+   	    android:id="@+id/appsList"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="wrap_content"
+   	    android:layout_below="@+id/parseBTN"
+   	    android:layout_centerHorizontal="true"
+   	    android:layout_marginTop="20dp"
+   	    android:visibility="invisible">
+   	</ListView>
+
 
 </RelativeLayout>

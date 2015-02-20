@@ -12,19 +12,30 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	TextView textView;
-	
+	Button parse;
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		textView = (TextView) findViewById(R.id.textView1);
+		
+		// set up click listeners on buttons
+		parse = (Button) findViewById(R.id.parseBTN);
+		parse.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		new DownloadData().execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml");
 	}
@@ -65,7 +76,6 @@ public class MainActivity extends Activity {
 		
 		protected void onPostExecute(String result){
 			Log.d("OnPostExecute", myXMLData);
-			textView.setText(myXMLData);
 		}
 		
 		
