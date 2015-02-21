@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import android.util.Log;
-
 public class ParseApplications {
 	private String data;
 	private ArrayList<Application> applications;
@@ -68,15 +66,6 @@ public class ParseApplications {
 			e.printStackTrace();
 			operationStatus = false;
 		}
-		
-		Log.d("HELLO!", Integer.toString(applications.size()));
-		
-		for (Application app: applications){
-			Log.d("LOG","***************");
-			Log.d("LOG", app.getName());
-			Log.d("LOG", app.getArtist());
-		}
-		
 		
 		return operationStatus;
 	}

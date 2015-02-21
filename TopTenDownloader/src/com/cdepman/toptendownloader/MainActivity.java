@@ -20,7 +20,10 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
-	Button parse;
+	Button tv;
+	Button apps;
+	Button movies;
+	Button songs;
 	String XMLdata;
 	ListView listApps;
 	
@@ -34,27 +37,38 @@ public class MainActivity extends Activity {
 		listApps = (ListView) findViewById(R.id.appsList);
 		
 		// set up click listeners on buttons
-		parse = (Button) findViewById(R.id.parseBTN);
-		parse.setOnClickListener(new View.OnClickListener() {
-			
+		tv = (Button) findViewById(R.id.tvBtn);
+		tv.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				ParseApplications parseApps = new ParseApplications(XMLdata);
-				boolean opStatus = parseApps.process();
-				if (opStatus){
-					ArrayList<Application> allApps = parseApps.getApplications();
-					
-					ArrayAdapter<Application> adapter = new ArrayAdapter<Application>(MainActivity.this, R.layout.list_item, allApps);
-					listApps.setVisibility(listApps.VISIBLE);
-					listApps.setAdapter(adapter);
-					
-				} else{
-					Log.d("MainAcivity", "error parsing XML");
-				}
+				new DownloadData().execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topTvEpisodes/xml");
 			}
 		});
 		
-		new DownloadData().execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=15/xml");
+		apps = (Button) findViewById(R.id.appsBtn);
+		apps.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new DownloadData().execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml");
+			}
+		});
+		
+		movies = (Button) findViewById(R.id.moviesBtn);
+		movies.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new DownloadData().execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topMovies/xml");
+			}
+		});
+		
+		songs = (Button) findViewById(R.id.songsBtn);
+		songs.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new DownloadData().execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topsongs/limit=10/xml");
+			}
+		});
+		
 	}
 
 	@Override
@@ -93,7 +107,18 @@ public class MainActivity extends Activity {
 		
 		protected void onPostExecute(String result){
 			Log.d("OnPostExecute", myXMLData);
-			XMLdata = myXMLData;
+			ParseApplications parseApps = new ParseApplications(myXMLData);
+			boolean opStatus = parseApps.process();
+			if (opStatus){
+				ArrayList<Application> allApps = parseApps.getApplications();
+				
+				ArrayAdapter<Application> adapter = new ArrayAdapter<Application>(MainActivity.this, R.layout.list_item, allApps);
+				listApps.setVisibility(listApps.VISIBLE);
+				listApps.setAdapter(adapter);
+				
+			} else{
+				Log.d("MainAcivity", "error parsing XML");
+			}
 		}
 		
 		

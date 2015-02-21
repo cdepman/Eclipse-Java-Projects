@@ -2,31 +2,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="0dp"
+    android:gravity="top"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cdepman.toptendownloader.MainActivity" >
 
-    
-   	<Button
-   	    android:id="@+id/parseBTN"
-   	    android:layout_width="wrap_content"
-   	    android:layout_height="wrap_content"
-   	    android:layout_alignLeft="@+id/appsList"
-   	    android:layout_alignParentTop="true"
-   	    android:layout_marginTop="25dp"
-   	    android:text="Parse XML" />
-    
-   	<ListView
-   	    android:id="@+id/appsList"
-   	    android:layout_width="match_parent"
-   	    android:layout_height="wrap_content"
-   	    android:layout_below="@+id/parseBTN"
-   	    android:layout_centerHorizontal="true"
-   	    android:layout_marginTop="20dp"
-   	    android:visibility="invisible">
-   	</ListView>
+    <ListView
+        android:id="@+id/appsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="49dp"
+        android:layout_marginBottom="14dp"
+        android:visibility="invisible" >
+    </ListView>
 
+    <Button
+        android:id="@+id/moviesBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Movies" />
+
+    <Button
+        android:id="@+id/songsBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/moviesBtn"
+        android:layout_alignBottom="@+id/moviesBtn"
+        android:layout_toRightOf="@+id/moviesBtn"
+        android:text="Songs" />
+
+    <Button
+        android:id="@+id/appsBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/moviesBtn"
+        android:layout_alignBottom="@+id/moviesBtn"
+        android:layout_toLeftOf="@+id/moviesBtn"
+        android:text="Apps" />
+
+    <Button
+        android:id="@+id/tvBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/appsBtn"
+        android:layout_alignBottom="@+id/appsBtn"
+        android:layout_toLeftOf="@+id/appsBtn"
+        android:text="TV" />
 
 </RelativeLayout>
