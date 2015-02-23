@@ -1,16 +1,32 @@
 package com.cdepman.videoplayer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
+	
+	Button playVideo;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		playVideo = (Button) findViewById(R.id.playBtn);
+		playVideo.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, VideoActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override
